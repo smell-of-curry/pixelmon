@@ -1,0 +1,819 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "ss:pokemon",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "kill": {
+        "minecraft:instant_despawn": {}
+      },
+      // size
+      "size:small": {
+        "minecraft:scale": {
+          "value": 0.2
+        },
+        "minecraft:collision_box": {
+          "width": 0.7,
+          "height": 1
+        }
+      },
+      "size:medium": {
+        "minecraft:scale": {
+          "value": 0.5
+        }
+      },
+      "size:large": {
+        "minecraft:scale": {
+          "value": 1
+        }
+      },
+      "size:mega": {
+        "minecraft:scale": {
+          "value": 2
+        }
+      },
+      "size:extreme": {
+        "minecraft:scale": {
+          "value": 5
+        }
+      },
+      //Movement
+      "movement:fly": {
+        "minecraft:navigation.fly": {
+          "can_path_from_air": true
+        },
+        "minecraft:movement.fly": {},
+        "minecraft:behavior.random_fly": {}
+      },
+      "movement:amphibious": {
+        "minecraft:navigation.generic": {},
+        "minecraft:movement.amphibious": {}
+      },
+      "movement:basic": {
+        "minecraft:navigation.walk": {},
+        "minecraft:movement.basic": {}
+      },
+      "movement:generic": {
+        "minecraft:navigation.generic": {},
+        "minecraft:movement.generic": {}
+      },
+      "movement:hover": {
+        "minecraft:navigation.float": {},
+        "minecraft:movement.hover": {}
+      },
+      "movement:jump": {
+        "minecraft:navigation.jump": {},
+        "minecraft:movement.jump": {}
+      },
+      "movement:skip": {
+        "minecraft:navigation.skip": {},
+        "minecraft:movement.skip": {}
+      },
+      "movement:sway": {
+        "minecraft:navigation.sway": {},
+        "minecraft:movement.sway": {}
+      },
+      //Speed bps based
+      "speed:1": {
+        "minecraft:movement": {
+          "value": 1
+        }
+      },
+      "speed:3": {
+        "minecraft:movement": {
+          "value": 3
+        }
+      },
+      "speed:6": {
+        "minecraft:movement": {
+          "value": 6
+        }
+      },
+      "speed:9": {
+        "minecraft:movement": {
+          "value": 9
+        }
+      },
+      "speed:12": {
+        "minecraft:movement": {
+          "value": 12
+        }
+      },
+      "speed:15": {
+        "minecraft:movement": {
+          "value": 15
+        }
+      },
+      "speed:18": {
+        "minecraft:movement": {
+          "value": 18
+        }
+      },
+      //Attack
+      "attack:1": {
+        "minecraft:attack": {
+          "damage": 1
+        }
+      },
+      "attack:2": {
+        "minecraft:attack": {
+          "damage": 2
+        }
+      },
+      "attack:3": {
+        "minecraft:attack": {
+          "damage": 3
+        }
+      },
+      "attack:4": {
+        "minecraft:attack": {
+          "damage": 4
+        }
+      },
+      "attack:5": {
+        "minecraft:attack": {
+          "damage": 5
+        }
+      },
+      "attack:6": {
+        "minecraft:attack": {
+          "damage": 6
+        }
+      },
+      "attack:7": {
+        "minecraft:attack": {
+          "damage": 7
+        }
+      },
+      "attack:8": {
+        "minecraft:attack": {
+          "damage": 8
+        }
+      },
+      "attack:9": {
+        "minecraft:attack": {
+          "damage": 9
+        }
+      },
+      "attack:10": {
+        "minecraft:attack": {
+          "damage": 10
+        }
+      },
+      "attack:11": {
+        "minecraft:attack": {
+          "damage": 11
+        }
+      },
+      "attack:12": {
+        "minecraft:attack": {
+          "damage": 12
+        }
+      },
+      "attack:13": {
+        "minecraft:attack": {
+          "damage": 13
+        }
+      },
+      "attack:14": {
+        "minecraft:attack": {
+          "damage": 14
+        }
+      },
+      "attack:15": {
+        "minecraft:attack": {
+          "damage": 15
+        }
+      },
+      "attack:16": {
+        "minecraft:attack": {
+          "damage": 16
+        }
+      },
+      "attack:17": {
+        "minecraft:attack": {
+          "damage": 17
+        }
+      },
+      "attack:18": {
+        "minecraft:attack": {
+          "damage": 18
+        }
+      },
+      "attack:19": {
+        "minecraft:attack": {
+          "damage": 19
+        }
+      },
+      "attack:20": {
+        "minecraft:attack": {
+          "damage": 20
+        }
+      },
+      //Health
+      "hp:1": {
+        "minecraft:health": {
+          "value": 1,
+          "max": 9999999
+        }
+      },
+      "hp:5": {
+        "minecraft:health": {
+          "value": 5,
+          "max": 9999999
+        }
+      },
+      "hp:10": {
+        "minecraft:health": {
+          "value": 10,
+          "max": 9999999
+        }
+      },
+      "hp:15": {
+        "minecraft:health": {
+          "value": 15,
+          "max": 9999999
+        }
+      },
+      "hp:20": {
+        "minecraft:health": {
+          "value": 900,
+          "max": 9999999
+        }
+      },
+      "hp:25": {
+        "minecraft:health": {
+          "value": 25,
+          "max": 9999999
+        }
+      },
+      "hp:30": {
+        "minecraft:health": {
+          "value": 30,
+          "max": 9999999
+        }
+      },
+      "hp:35": {
+        "minecraft:health": {
+          "value": 35,
+          "max": 9999999
+        }
+      },
+      "hp:40": {
+        "minecraft:health": {
+          "value": 40,
+          "max": 9999999
+        }
+      },
+      "hp:45": {
+        "minecraft:health": {
+          "value": 45,
+          "max": 9999999
+        }
+      },
+      "hp:50": {
+        "minecraft:health": {
+          "value": 50,
+          "max": 9999999
+        }
+      },
+      // Miscellaneous
+      "misc:fire_immune": {
+        "minecraft:fire_immune": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["pokemon"]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_damage",
+                    "operator": "==",
+                    "value": "projectile"
+                  }
+                ],
+                "any_of": [
+                  {
+                    "test": "has_nametag",
+                    "operator": "==",
+                    "value": "entity.ss:pokeball.name"
+                  }
+                ]
+              },
+              "event": "engine:hit_by_pokeball"
+            }
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_damage",
+                    "operator": "==",
+                    "value": "projectile"
+                  }
+                ],
+                "any_of": [
+                  {
+                    "test": "has_nametag",
+                    "operator": "==",
+                    "value": "entity.ss:masterball.name"
+                  }
+                ]
+              },
+              "event": "engine:hit_by_masterball"
+            }
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_damage",
+                    "operator": "==",
+                    "value": "projectile"
+                  }
+                ],
+                "any_of": [
+                  {
+                    "test": "has_nametag",
+                    "operator": "==",
+                    "value": "entity.ss:ultraball.name"
+                  }
+                ]
+              },
+              "event": "engine:hit_by_ultraball"
+            }
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_damage",
+                    "operator": "==",
+                    "value": "projectile"
+                  }
+                ],
+                "any_of": [
+                  {
+                    "test": "has_nametag",
+                    "operator": "==",
+                    "value": "entity.ss:greatball.name"
+                  }
+                ]
+              },
+              "event": "engine:hit_by_greatball"
+            }
+          }
+        ]
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 6,
+        "speed_multiplier": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 7,
+        "look_distance": 6,
+        "probability": 0.02
+      }
+    },
+    "events": {
+      "engine:level_up": {},
+      "engine:hit_by_pokeball": {},
+      "engine:hit_by_masterball": {},
+      "engine:hit_by_greatball": {},
+      "engine:hit_by_ultraball": {},
+      "despawn": {
+        "add": {
+          "component_groups": ["kill"]
+        }
+      },
+      "level_up": {
+        "run_command": {
+          "target": "self",
+          "command": ["say i leveled up"]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "randomize": [
+              {
+                "weight": 40,
+                "run_command": {
+                  "target": "self",
+                  "command": ["tag @s add \"level:1\""]
+                }
+              },
+              {
+                "weight": 30,
+                "run_command": {
+                  "target": "self",
+                  "command": ["tag @s add \"level:2\""]
+                }
+              },
+              {
+                "weight": 10,
+                "run_command": {
+                  "target": "self",
+                  "command": ["tag @s add \"level:3\""]
+                }
+              },
+              {
+                "weight": 5,
+                "run_command": {
+                  "target": "self",
+                  "command": ["tag @s add \"level:4\""]
+                }
+              },
+              {
+                "weight": 5,
+                "run_command": {
+                  "target": "self",
+                  "command": ["tag @s add \"level:5\""]
+                }
+              },
+              {
+                "weight": 5,
+                "run_command": {
+                  "target": "self",
+                  "command": ["tag @s add \"level:7\""]
+                }
+              },
+              {
+                "weight": 5,
+                "run_command": {
+                  "target": "self",
+                  "command": ["tag @s add \"level:10\""]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      //Size events
+      "size:reset": {
+        "remove": {
+          "component_groups": [
+            "size:small",
+            "size:medium",
+            "size:large",
+            "size:mega",
+            "size:extreme"
+          ]
+        }
+      },
+      "size:small": {
+        "trigger": "size:reset",
+        "add": {
+          "component_groups": ["size:small"]
+        }
+      },
+      "size:medium": {
+        "trigger": "size:reset",
+        "add": {
+          "component_groups": ["size:medium"]
+        }
+      },
+      "size:large": {
+        "trigger": "size:reset",
+        "add": {
+          "component_groups": ["size:large"]
+        }
+      },
+      "size:mega": {
+        "trigger": "size:reset",
+        "add": {
+          "component_groups": ["size:mega"]
+        }
+      },
+      "size:extreme": {
+        "trigger": "size:reset",
+        "add": {
+          "component_groups": ["size:extreme"]
+        }
+      },
+      //Movement
+      "movement:fly": {
+        "add": {
+          "component_groups": ["movement:fly"]
+        }
+      },
+      "movement:amphibious": {
+        "add": {
+          "component_groups": ["movement:amphibious"]
+        }
+      },
+      "movement:basic": {
+        "add": {
+          "component_groups": ["movement:basic"]
+        }
+      },
+      "movement:generic": {
+        "add": {
+          "component_groups": ["movement:generic"]
+        }
+      },
+      "movement:hover": {
+        "add": {
+          "component_groups": ["movement:hover"]
+        }
+      },
+      "movement:jump": {
+        "add": {
+          "component_groups": ["movement:jump"]
+        }
+      },
+      "movement:skip": {
+        "add": {
+          "component_groups": ["movement:skip"]
+        }
+      },
+      "movement:sway": {
+        "add": {
+          "component_groups": ["movement:sway"]
+        }
+      },
+      //Speed
+      "speed:reset": {
+        "remove": {
+          "component_groups": [
+            "speed:1",
+            "speed:3",
+            "speed:6",
+            "speed:9",
+            "speed:12",
+            "speed:15",
+            "speed:18"
+          ]
+        }
+      },
+      "speed:1": {
+        "trigger": "speed:reset",
+        "add": {
+          "component_groups": ["speed:1"]
+        }
+      },
+      "speed:3": {
+        "trigger": "speed:reset",
+        "add": {
+          "component_groups": ["speed:3"]
+        }
+      },
+      "speed:6": {
+        "trigger": "speed:reset",
+        "add": {
+          "component_groups": ["speed:6"]
+        }
+      },
+      "speed:9": {
+        "trigger": "speed:reset",
+        "add": {
+          "component_groups": ["speed:9"]
+        }
+      },
+      "speed:12": {
+        "trigger": "speed:reset",
+        "add": {
+          "component_groups": ["speed:12"]
+        }
+      },
+      "speed:15": {
+        "trigger": "speed:reset",
+        "add": {
+          "component_groups": ["speed:15"]
+        }
+      },
+      "speed:18": {
+        "trigger": "speed:reset",
+        "add": {
+          "component_groups": ["speed:18"]
+        }
+      },
+      //Attack
+      "attack:reset": {
+        "remove": {
+          "component_groups": [
+            "attack:1",
+            "attack:3",
+            "attack:6",
+            "attack:7",
+            "attack:8",
+            "attack:9",
+            "attack:10",
+            "attack:11",
+            "attack:12",
+            "attack:13",
+            "attack:14",
+            "attack:15",
+            "attack:16",
+            "attack:17"
+          ]
+        }
+      },
+      "attack:1": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:1"]
+        }
+      },
+      "attack:2": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:2"]
+        }
+      },
+      "attack:3": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:3"]
+        }
+      },
+      "attack:4": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:4"]
+        }
+      },
+      "attack:5": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:5"]
+        }
+      },
+      "attack:6": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:6"]
+        }
+      },
+      "attack:7": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:7"]
+        }
+      },
+      "attack:8": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:8"]
+        }
+      },
+      "attack:9": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:9"]
+        }
+      },
+      "attack:10": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:10"]
+        }
+      },
+      "attack:11": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:11"]
+        }
+      },
+      "attack:12": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:12"]
+        }
+      },
+      "attack:13": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:13"]
+        }
+      },
+      "attack:14": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:14"]
+        }
+      },
+      "attack:15": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:15"]
+        }
+      },
+      "attack:16": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:16"]
+        }
+      },
+      "attack:17": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:17"]
+        }
+      },
+      "attack:18": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:18"]
+        }
+      },
+      "attack:19": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:19"]
+        }
+      },
+      "attack:20": {
+        "trigger": "attack:reset",
+        "add": {
+          "component_groups": ["attack:20"]
+        }
+      },
+      //Health
+      "hp:1": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:1"]
+        }
+      },
+      "hp:5": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:5"]
+        }
+      },
+      "hp:10": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:10"]
+        }
+      },
+      "hp:15": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:15"]
+        }
+      },
+      "hp:20": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:20"]
+        }
+      },
+      "hp:25": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:25"]
+        }
+      },
+      "hp:30": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:30"]
+        }
+      },
+      "hp:35": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:35"]
+        }
+      },
+      "hp:40": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:40"]
+        }
+      },
+      "hp:45": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:45"]
+        }
+      },
+      "hp:50": {
+        "trigger": "hp:reset",
+        "add": {
+          "component_groups": ["hp:50"]
+        }
+      }
+    }
+  }
+}

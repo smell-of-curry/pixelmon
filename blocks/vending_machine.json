@@ -1,0 +1,125 @@
+{
+	"format_version": "1.16.220",
+	"minecraft:block": {
+		"description": {
+			"identifier": "ss:vending_machine",
+			"properties": {
+				"ss:direction": [
+					0,
+					1,
+					2,
+					3
+				]
+			}
+		},
+		"components": {
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "vending_machine",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:destroy_time": 1,
+			"minecraft:friction": 0.6,
+			"minecraft:geometry": "geometry.vending_machine",
+			"minecraft:on_player_placing": {
+				"event": "set_placing_rotation"
+			},
+			"minecraft:block_light_absorption": 0,
+			"minecraft:on_interact": {
+				"event": "purchase_item",
+				"condition": "query.get_equipped_item_name('main_hand') == 'pokedollar'"
+			}
+		},
+		"events": {
+			"set_placing_rotation": {
+				"set_block_property": {
+					"V1:direction": "query.cardinal_facing_2d-2"
+				}
+			},
+			"purchase_item": {
+				"sequence": [
+					{
+						"decrement_stack": {},
+						"run_command": {
+							"command": [
+								"particle minecraft:villager_happy ~ ~2 ~"
+							]
+						}
+					},
+					{
+						"randomize": [
+							{
+								"run_command": {
+									"command": [
+										"give @p ss:lemonade"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"give @p ss:moomoo_milk"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"give @p ss:freshwater"
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_property('ss:direction') == 0",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						180,
+						0
+					],
+					"minecraft:loot": "loot_tables/vending_machine.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ss:direction') == 1",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						0,
+						0
+					],
+					"minecraft:loot": "loot_tables/vending_machine.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ss:direction') == 2",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						270,
+						0
+					],
+					"minecraft:loot": "loot_tables/vending_machine.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ss:direction') == 3",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						90,
+						0
+					],
+					"minecraft:loot": "loot_tables/vending_machine.json"
+				}
+			}
+		]
+	}
+}

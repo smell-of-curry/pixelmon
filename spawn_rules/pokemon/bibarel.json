@@ -1,0 +1,26 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "pokemon:bibarel",
+      "population_control": "monster"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:weight": {
+          "default": 250
+        },
+        "minecraft:herd": {
+          "min_size": 3,
+          "max_size": 4
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "monster"
+        }
+      }
+    ]
+  }
+}

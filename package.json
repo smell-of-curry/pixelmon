@@ -1,0 +1,38 @@
+{
+  "name": "project-pixelmon",
+  "version": "1.0.0",
+  "description": "a addon for pokemon",
+  "main": "scripts/index.js",
+  "scripts": {
+    "test": "console.warn(\"hey\")",
+    "start": "node generate/index.mjs",
+    "anim": "node generate/animations.mjs",
+    "pokemon": "node generate/pokemon.mjs",
+    "testscrape": "node generate/testscrape.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smell-of-curry/Project-Pixelmon-Remasterd.git"
+  },
+  "keywords": [
+    "pokemon"
+  ],
+  "author": "Smell of curry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smell-of-curry/Project-Pixelmon-Remasterd/issues"
+  },
+  "homepage": "https://github.com/smell-of-curry/Project-Pixelmon-Remasterd#readme",
+  "dependencies": {
+    "@types/mojang-minecraft": "^0.1.4",
+    "cheerio": "^1.0.0-rc.10",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^10.0.1",
+    "node-fetch": "^3.2.0",
+    "nstall": "^0.2.0",
+    "pokedex-promise-v2": "^4.0.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "table-scraper": "^1.0.3"
+  }
+}

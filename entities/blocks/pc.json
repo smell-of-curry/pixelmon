@@ -1,0 +1,164 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "ss:pc",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "components": {
+      "minecraft:loot": {
+        "table": "loot_tables/entities/pc.json"
+      },
+      "minecraft:type_family": {
+        "family": ["block"]
+      },
+      "minecraft:knockback_resistance": {
+        "value": 1000
+      },
+      "minecraft:is_stackable": {},
+      "minecraft:scale": {
+        "value": 1
+      },
+      "minecraft:collision_box": {
+        "width": 0.7,
+        "height": 1
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": {
+                "none_of": [
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "wooden_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "stone_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "iron_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "golden_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "diamond_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "netherite_pickaxe"
+                  }
+                ]
+              }
+            },
+            "deals_damage": false
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "wooden_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "stone_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "iron_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "golden_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "diamond_pickaxe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "netherite_pickaxe"
+                  }
+                ]
+              }
+            },
+            "damage_multiplier": 200
+          }
+        ]
+      },
+      "minecraft:health": {
+        "value": 1000,
+        "max": 1000
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 100
+          }
+        ]
+      },
+      "minecraft:movement": {
+        "value": 0
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "event": "engine:on_interact",
+              "target": "self"
+            },
+            "swing": true
+          }
+        ]
+      }
+    },
+    "events": {
+      "engine:on_interact": {}
+    }
+  }
+}

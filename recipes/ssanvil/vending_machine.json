@@ -1,0 +1,43 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "tags": [
+            "ssanvil"
+        ],
+        "pattern": [
+            "iGi",
+            "rfl",
+            "iaR"
+        ],
+        "key": {
+            "i": {
+                "item": "minecraft:iron_ingot"
+            },
+            "R": {
+                "item": "minecraft:redstone"
+            },
+            "G": {
+                "item": "minecraft:glass_pane"
+            },
+            "l": {
+                "item": "ss:lemonade"
+            },
+            "f": {
+                "item": "ss:freshwater"
+            },
+            "r": {
+                "item": "ss:rare_candy"
+            },
+            "a": {
+                "item": "ss:aluminum_plate"
+            }
+        },
+        "result": {
+            "item": "ss:vending_machine",
+            "count": 1
+        },
+        "description": {
+            "identifier": "ss:vending_machine"
+        }
+    }
+}
