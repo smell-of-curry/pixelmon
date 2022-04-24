@@ -80,7 +80,10 @@ world.events.beforeDataDrivenEntityTriggerEvent.subscribe(
         SA.build.chat.broadcast(
           `Your Pokemon ${
             pokedex[DataDrivenEntityTriggerEvent.entity.id].name
-          } Has Leveled Up!`
+          } Has Leveled Up to ${SlotsBuild.getSlotLevel(
+            SA.build.player.fetch(trackerData.owner),
+            trackerData.slot
+          )}!`
         );
       }
       if (
@@ -100,7 +103,7 @@ world.events.beforeDataDrivenEntityTriggerEvent.subscribe(
         if (!trackerData) return;
         // evolve pokemon
         const evolveTo =
-          pokedex[DataDrivenEntityTriggerEvent.entity.id].find(
+          pokedex[DataDrivenEntityTriggerEvent.entity.id].evolutions.find(
             (evolution) =>
               evolution.evolution_details.item.name ===
               DataDrivenEntityTriggerEvent.id.substring(22)

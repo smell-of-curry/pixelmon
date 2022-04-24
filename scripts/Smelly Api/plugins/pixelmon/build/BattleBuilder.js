@@ -244,7 +244,6 @@ export class Battle {
           break;
         case 2:
           if (this.trainer) return this.end(`lose`);
-          this.pokemon.triggerEvent("despawn");
           this.end();
           break;
         case 3:

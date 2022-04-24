@@ -399,6 +399,16 @@ const generate = async () => {
                     "event": "engine:hit_by_greatball",
                     "deals_damage": true
                   }
+                },
+                {
+                  "on_damage": {
+                    "filters": {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "player"
+                    }
+                  },
+                  "deals_damage": false
                 }
               ]
             },
