@@ -5,10 +5,10 @@
   "main": "scripts/index.js",
   "scripts": {
     "test": "console.warn(\"hey\")",
-    "start": "node generate/index.mjs",
-    "anim": "node generate/animations.mjs",
-    "pokemon": "node generate/pokemon.mjs",
-    "testscrape": "node generate/testscrape.mjs"
+    "start": "node dist/index.mjs",
+    "anim": "node dist/animations.mjs",
+    "pokemon": "node dist/pokemon.mjs",
+    "testscrape": "node dist/testscrape.mjs"
   },
   "repository": {
     "type": "git",
