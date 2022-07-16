@@ -14,9 +14,9 @@ import {
   MessageFormData,
 } from "mojang-minecraft-ui";
 import { SlotsBuild } from "./SlotsBuilder.js";
-import { pokemon } from "../pokemon.js";
+import { pokemon } from "../api/pokemon.js";
 import { Pokemon, PokemonBuild } from "./PokemonBuilder.js";
-import { trainers } from "../trainers.js";
+import { trainers } from "../api/trainers.js";
 
 const peopleBattling = [];
 const pokemonBattling = [];
@@ -33,7 +33,7 @@ const ballMultiplyers = {
   ultra: 2.0,
 };
 
-export class Battle {
+class Battle {
   static battler = {};
   static pokemon = {};
   static slot = 0;
@@ -42,7 +42,7 @@ export class Battle {
    * @param {Player} battler Message you want to broadcast in chat
    * @param {Entity} pokemon Player you want to broadcast to
    */
-  constructor(battler, pokemon, trainer = null) {
+  constructor(battler, pokemon, trainer = null, otherPlayer = null) {
     if (peopleBattling.includes(battler.nameTag))
       throw new Error("Player is already in a battle");
     if (pokemonBattling.includes(pokemon))
@@ -50,9 +50,8 @@ export class Battle {
 
     this.battler = battler;
     this.pokemon = pokemon;
-    if (trainer) {
-      this.trainer = trainer;
-    }
+    this.trainer = trainer;
+    this.otherPlayer = otherPlayer;
     this.round = 1;
     this.start();
     this.battler.runCommand(`music play battle.music 1 0 loop`);
@@ -75,13 +74,14 @@ export class Battle {
     peopleBattling.push(this.battler.nameTag);
     pokemonBattling.push(this.pokemon);
     if (this.trainer) trainersBattling.push(this.trainer);
+    if (this.otherPlayer) peopleBattling.push(this.otherPlayer.nameTag);
     this.choosePokemonMenu();
   }
 
   end(how = null) {
     try {
       SA.build.chat.broadcast(`The Battle has Ended`, this.battler.nameTag);
-      this.battler.runCommand(`music stop 3`);
+      this.battler.runCommand(`stopsound @s`);
       if (this.trainer) {
         this.pokemon.triggerEvent("despawn");
         this.trainer.triggerEvent("despawn");
@@ -100,6 +100,9 @@ export class Battle {
           );
         }
       }
+      if (this.otherPlayer) {
+        peopleBattling.splice(this.otherPlayer.nameTag);
+      }
       peopleBattling.splice(this.battler.nameTag);
       pokemonBattling.splice(this.pokemon);
       world.events.tick.unsubscribe(this.tickcallback);
@@ -115,18 +118,20 @@ export class Battle {
           return this.end("win");
         }
         // battle needs to continue
-        console.warn(
-          `round ${this.round} pokemon ${this.pokemon.id} trainer ${
-            this.trainer.id
-          } ${JSON.stringify(trainers[this.trainer.id].pokemon)}`
-        );
         this.round++;
-        console.warn(trainers[this.trainer.id].pokemon[this.round - 1]);
         this.pokemon = this.trainer.dimension.spawnEntity(
           trainers[this.trainer.id].pokemon[this.round - 1],
           this.trainer.location
         );
-        console.warn(`round ${this.round} pokemon ${this.pokemon.id}`);
+        return this.base_menu(
+          `${trainers[this.trainer.id].name} Changed there pokemon to ${
+            pokemon[trainers[this.trainer.id].pokemon[this.round - 1]].name
+          }`
+        );
+      } else if(this.otherPlayer) {
+        if(this.round >= 3) return this.end()
+        // battle continue
+        this.round++
         return this.base_menu(
           `${trainers[this.trainer.id].name} Changed there pokemon to ${
             pokemon[trainers[this.trainer.id].pokemon[this.round - 1]].name
@@ -245,6 +250,7 @@ export class Battle {
         case 2:
           if (this.trainer) return this.end(`lose`);
           this.end();
+          this.pokemon.triggerEvent("despawn");
           break;
         case 3:
           this.choosePokemonMenu();
@@ -256,6 +262,12 @@ export class Battle {
   }
 
   bag_menu(error = "") {
+    if (SlotsBuild.getSlot(this.battler, this.slot).health <= 0) {
+      // players pokemon is dead
+      return this.base_menu(
+        `That Pokemon is Dead and cannot fight please switch pokemon`
+      );
+    }
     let actionForm = new ActionFormData();
 
     actionForm.title("Bag Menu");
@@ -516,6 +528,7 @@ export class Battle {
           if (x < 10) {
             // ball is missed completly
             SA.build.chat.broadcast(`Ball was missed`, this.battler.nameTag);
+            this.base_menu();
           } else if (x < 30) {
             // ball shakes once
             this.pokemon.runCommand(

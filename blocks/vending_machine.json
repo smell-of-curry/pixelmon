@@ -28,7 +28,7 @@
 			"minecraft:block_light_absorption": 0,
 			"minecraft:on_interact": {
 				"event": "purchase_item",
-				"condition": "query.get_equipped_item_name('main_hand') == 'pokedollar'"
+				"condition": "query.is_item_name_any('main_hand') == 'pokedollar'"
 			}
 		},
 		"events": {

@@ -6,7 +6,7 @@ import {
   MessageFormData,
 } from "mojang-minecraft-ui";
 import { SlotsBuild } from "./SlotsBuilder.js";
-import { pokemon } from "../pokemon.js";
+import { pokemon } from "../api/pokemon.js";
 import { Pokemon } from "./PokemonBuilder.js";
 
 export const tradeRequests = [

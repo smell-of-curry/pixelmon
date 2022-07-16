@@ -1,4 +1,4 @@
-import { Location, world } from "mojang-minecraft";
+import { Location, Player, world } from "mojang-minecraft";
 import * as SA from "../../../index.js";
 import {
   ActionFormData,
@@ -6,11 +6,15 @@ import {
   MessageFormData,
 } from "mojang-minecraft-ui";
 import { SlotsBuild } from "./SlotsBuilder.js";
-import { pokemon } from "../pokemon.js";
+import { pokemon } from "../api/pokemon.js";
 import { Pokemon } from "./PokemonBuilder.js";
 import { PcBuild } from "./PcBuilder.js";
 
 export const tradeRequests = [
+  // {"to": sdsd, "from": sdsd}
+];
+
+export const battleRequests = [
   // {"to": sdsd, "from": sdsd}
 ];
 
@@ -34,7 +38,7 @@ class GuiBuilder {
         .show(player)
         .then(({ isCanceled, selection }) => {
           if (isCanceled) return this.firstTimeJoin(player);
-          player.runCommand(`function start`)
+          player.runCommand(`function start`);
           switch (selection) {
             case 0:
               SlotsBuild.setSlot(player, 1, {
@@ -175,12 +179,13 @@ class GuiBuilder {
       console.warn(error + error.stack);
     }
   }
-  main(player) {
+  main(player, error = "") {
     let actionForm = new ActionFormData();
 
     actionForm.title("Menu");
-    actionForm.body("");
+    actionForm.body(error);
     actionForm.button("Pokémon", "textures/ui/gui/pokeball");
+    actionForm.button("Battle", "textures/ui/gui/pokeball");
 
     actionForm.show(player).then(({ isCanceled, selection }) => {
       if (isCanceled) return;
@@ -190,8 +195,7 @@ class GuiBuilder {
           this.page_1(player);
           break;
         case 1:
-          player.runCommand("say §7ActionFormData: §bButton §e(2) §atest");
-          player.runCommand(`give @s golden_apple 1`);
+          this.battleRequestMenu(player);
           break;
       }
     });
@@ -254,7 +258,7 @@ class GuiBuilder {
           case 1:
             // send out pokemon
             SlotsBuild.returnPokemon(player, slot);
-            SA.build.chat.broadcast("Returned pokemon to GUI");
+            SA.build.chat.broadcast("Returned pokemon to GUI", player.nameTag);
             break;
           case 2:
             // release pokemon
@@ -546,6 +550,49 @@ class GuiBuilder {
 
   tradeCancel(tradeRequestData) {
     tradeRequests.splice(tradeRequestData, 1);
+  }
+
+  /**
+   * shows a battle requesdt menu to a player
+   * @param {Player} player
+   */
+  battleRequestMenu(player) {
+    try {
+      let actionForm = new ActionFormData();
+
+      actionForm.title(`Request a battle`);
+      actionForm.body(`Please choose a person to battle`);
+      const worldPlayers = [...world.getPlayers()];
+      worldPlayers.forEach((elm) => actionForm.button(elm.nameTag));
+      actionForm.show(player).then(({ isCanceled, selection }) => {
+        if (isCanceled) return;
+        if (worldPlayers[selection].nameTag === player.nameTag)
+          return this.main(player, "§cYou cant battle yourself");
+        if (battleRequests.find((request) => request.from === player.nameTag))
+          return this.main(
+            player,
+            "§cYou already have a open battle request please cancel it!"
+          );
+        battleRequests.push({
+          to: worldPlayers[selection].name,
+          from: player.name,
+        });
+        SA.build.chat.broadcast(
+          `§e${player.nameTag}§f wants to battle you!§f, type §e-battle accept§f to start a battle`,
+          worldPlayers[selection].nameTag
+        );
+        return SA.build.chat.broadcast(
+          `Sent a battle request to ${worldPlayers[selection].nameTag}`,
+          player.nameTag
+        );
+      });
+    } catch (error) {
+      console.warn(error + error.stack);
+    }
+  }
+
+  battleCancel(battleRequestData) {
+    battleRequests.splice(battleRequestData, 1);
   }
 }
 export const GuiBuild = new GuiBuilder();

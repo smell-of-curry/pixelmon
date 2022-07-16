@@ -3,45 +3,46 @@
   "header": {
     "name": "pack.name",
     "description": "pack.description",
-    "min_engine_version": [1, 18, 3],
-    "uuid": "a188e64c-e2b4-42e1-8520-0e2b5b22f26a",
-    "version": [2, 0, 1]
+    "min_engine_version": [1, 19, 0],
+    "uuid": "2d02bea7-a5c8-40ab-9735-b05c3209365a",
+    "version": [3, 0, 0]
   },
   "modules": [
     {
       "description": "Data Module",
       "type": "data",
-      "uuid": "669e83fb-1fe9-4f23-9a6c-cfe28344eaf6",
-      "version": [2, 0, 1]
+      "uuid": "875e54cf-8146-4508-b52c-cc4db006db4c",
+      "version": [3, 0, 0]
     },
     {
       "description": "Gametest Module",
-      "type": "javascript",
-      "uuid": "cde6447c-aa7b-446c-b707-acec9033360f",
-      "version": [0, 0, 1],
+      "language": "javascript",
+      "type": "script",
+      "uuid": "97248e45-9a72-488f-aa8b-c06ae12d1ace",
+      "version": [3, 0, 0],
       "entry": "scripts/index.js"
     }
   ],
   "dependencies": [
-    // mojang-minecraft Modules
     {
+      "description": "mojang-minecraft module",
       "uuid": "6f4b6893-1bb6-42fd-b458-7fa3d0c89616",
       "version": [0, 1, 0]
     },
-    //mojang-minecraft-ui Module
     {
-      "uuid": "2BD50A27-AB5F-4F40-A596-3641627C635E",
+      "description": "mojang-gametest module",
+      "uuid": "6f4b6893-1bb6-42fd-b458-7fa3d0c89616",
       "version": [0, 1, 0]
     },
-    // PIXELMON RES
     {
-      "uuid": "d85c71ed-636d-42be-85ef-d0d50606c687",
-      "version": [2, 0, 0]
+      "description": "mojang-minecraft-ui module",
+      "uuid": "2bd50a27-ab5f-4f40-a596-3641627c635e",
+      "version": [0, 1, 0]
     }
   ],
   "metadata": {
-    "authors": ["Shiftery Plays", "Smell of curry"],
+    "authors": ["Smell of curry"],
     "license": "MIT",
-    "url": "https://mcdlhub.com"
+    "url": "https://github.com/smell-of-curry/Smelly-API"
   }
 }

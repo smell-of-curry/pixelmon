@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/smell-of-curry/Project-Pixelmon-Remasterd#readme",
   "dependencies": {
-    "@types/mojang-minecraft": "^0.1.4",
+    "@types/mojang-gametest": "^0.1.4",
+    "@types/mojang-minecraft": "^0.1.5",
+    "@types/mojang-minecraft-ui": "^0.1.0",
     "cheerio": "^1.0.0-rc.10",
     "fs": "^0.0.1-security",
     "fs-extra": "^10.0.1",

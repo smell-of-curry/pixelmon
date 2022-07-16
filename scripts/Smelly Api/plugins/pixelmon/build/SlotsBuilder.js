@@ -5,7 +5,7 @@ import {
   world,
 } from "mojang-minecraft";
 import * as SA from "../../../index.js";
-import { pokemon } from "../pokemon.js";
+import { pokemon } from "../api/pokemon.js";
 
 class SlotsBuilder {
   //"pokemon_slots":[{"id":"ss:sdjhsd", "level": 2, "health": 23, "usedAttacks": {"name": 1 /*currentpp*/}},{}]
@@ -17,6 +17,7 @@ class SlotsBuilder {
         xp: null,
         health: null,
         sent_out: false,
+        shiny: false,
         usedAttacks: {},
       },
       {
@@ -24,6 +25,7 @@ class SlotsBuilder {
         level: null,
         xp: null,
         health: null,
+        shiny: false,
         sent_out: false,
         usedAttacks: {},
       },
@@ -32,6 +34,7 @@ class SlotsBuilder {
         level: null,
         xp: null,
         health: null,
+        shiny: false,
         sent_out: false,
         usedAttacks: {},
       },
@@ -40,6 +43,7 @@ class SlotsBuilder {
         level: null,
         xp: null,
         health: null,
+        shiny: false,
         sent_out: false,
         usedAttacks: {},
       },
@@ -48,6 +52,7 @@ class SlotsBuilder {
         level: null,
         xp: null,
         health: null,
+        shiny: false,
         sent_out: false,
         usedAttacks: {},
       },
@@ -56,6 +61,7 @@ class SlotsBuilder {
         level: null,
         xp: null,
         health: null,
+        shiny: false,
         sent_out: false,
         usedAttacks: {},
       },
@@ -110,6 +116,11 @@ class SlotsBuilder {
     slotData["health"] = health;
     this.setSlot(player, slot, slotData);
   }
+  setSlotsShiny(player, slot, shiny) {
+    let slotData = this.getSlot(player, slot);
+    slotData["shiny"] = shiny;
+    this.setSlot(player, slot, slotData);
+  }
   setSlotsSentout(player, slot, value) {
     let slotData = this.getSlot(player, slot);
     slotData["sent_out"] = value ?? false;
@@ -142,6 +153,9 @@ class SlotsBuilder {
       entity
         .getComponent("minecraft:health")
         .setCurrent(parseInt(slotData.health));
+      if (slotData.shiny) {
+        entity.getComponent("minecraft:skin_id").value = 1;
+      }
       player.runCommand(`give @s ss:instatametool 1`);
       this.setSlotsSentout(player, slot, true);
     }
@@ -193,7 +207,6 @@ class SlotsBuilder {
   }
 
   isDead(player, slot) {
-    console.warn(`is dead`);
     let pokemonData = this.getSlots(player);
     if (pokemonData[slot - 1].health <= 0) return true;
     if (pokemonData[slot - 1] && pokemonData[slot - 1].health == null)
@@ -209,6 +222,11 @@ class SlotsBuilder {
       if (this.isDead(player, i)) dead++;
     }
     return dead;
+  }
+
+  allDead(player) {
+    if (this.ammountDead(player) == this.ammountOfPokemon(player)) return true;
+    return false;
   }
 
   healAllPokemon(player) {

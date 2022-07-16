@@ -1,6 +1,6 @@
 import { Location, world } from "mojang-minecraft";
 import * as SA from "../../../index.js";
-import { pokemon } from "../pokemon.js";
+import { pokemon } from "../api/pokemon.js";
 export class Pokemon {
   static level = 1;
   static id = 0;

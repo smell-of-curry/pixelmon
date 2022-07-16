@@ -1,0 +1,1 @@
+{"format_version":"1.18.3","minecraft:entity":{"description":{"identifier":"pokemon_tamed:palkia","runtime_identifier":"minecraft:arrow","is_spawnable":false,"is_summonable":true,"is_experimental":false},"components":{"minecraft:projectile":{},"minecraft:transformation":{"into":"pokemonpalkia<minecraft:on_tame>","keep_owner":true}}}}
